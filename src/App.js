@@ -1,24 +1,36 @@
-import logo from './logo.svg';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
-
+import Footer from './Components/Footer';
+import Header from './Components/Header';
+import Login from './Components/Login';
+// import Login from './Components/Login';
+import{BrowserRouter,Routes,Route} from "react-router-dom"
+import Registor from './Components/Register';
+import Home from './Components/Home';
 function App() {
+  const currentLocation=window.location.href.split("/")[3];
+
   return (
+   
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    
+     {currentLocation !== "login"&& currentLocation !=="register"&& < Header/>}
+   
+<Routes>
+
+  <Route path='/' element={<Home/>}/>
+  <Route path="/login" element={<Login/>}/>
+  <Route path='/register' element={<Registor/>}/>
+  {/* <Route path='/' element={<Home/>}/>
+    <Route path='/login' element={<Login/>}/>
+    <Route path="/registor"  element={<Registor/>}/>
+     */}
+ 
+   </Routes>
+     <Footer/>
+    
     </div>
+    
   );
 }
 
